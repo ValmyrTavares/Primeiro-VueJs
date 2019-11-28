@@ -20,6 +20,7 @@
     <button @click="mudarNome('Guitarra')">Guitarra</button>
     <button @click="mudarNome('Bandolin')">Bandolin</button>
     <button @click="mudarNome('Contra-Baixo')">Contra Baixo</button>
+    <button @click="verEvento">Ver EVENTO</button>
   </div>
 
 
@@ -34,12 +35,19 @@
       methods: {
         incrementar() {
           this.total++;
+          this.teste()
         },
         decrementar() {
           this.total--;
         },
         mudarNome(instrumento) {
           this.instrumento = instrumento;
+        },
+        verEvento(event) {
+          console.log(event)
+        },
+        teste() {
+          console.log("Teste Ativado ")
         }
       }
 
