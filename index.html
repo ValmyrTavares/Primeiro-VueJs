@@ -12,12 +12,14 @@
 <body>
 
   <div id="app">
-    {{empresa}} {{produto}}
-  </div>
-
-
-  <div id="quadrado">
-    <p>perimetro {{lado * 4}} area {{lado * lado}}</p>
+    {{total}}
+    <button @click="incrementar">Aumente o número</button>
+    <button @click="decrementar">Diminua o número</button>
+    <p>{{instrumento}}</p>
+    <button @click="mudarNome('Violão')">Violão</button>
+    <button @click="mudarNome('Guitarra')">Guitarra</button>
+    <button @click="mudarNome('Bandolin')">Bandolin</button>
+    <button @click="mudarNome('Contra-Baixo')">Contra Baixo</button>
   </div>
 
 
@@ -26,17 +28,21 @@
     const vm = new Vue({
       el: "#app",
       data: {
-        empresa: "Apple",
-        produto: "iPhone"
+        total: 0,
+        instrumento: ""
+      },
+      methods: {
+        incrementar() {
+          this.total++;
+        },
+        decrementar() {
+          this.total--;
+        },
+        mudarNome(instrumento) {
+          this.instrumento = instrumento;
+        }
       }
-    })
 
-    const vm1 = new Vue({
-      el: "#quadrado",
-      data: {
-        lado: 5,
-
-      }
     })
 
 
