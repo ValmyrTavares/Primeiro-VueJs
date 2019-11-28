@@ -10,36 +10,32 @@
 </head>
 
 <body>
+
   <div id="app">
-    {{nome}}
-  </div>
-  <div id="app1">
-    {{ferramenta}}
+    {{empresa}} {{produto}}
   </div>
 
-  <div id="app2">
-    {{instrumento}}
+
+  <div id="quadrado">
+    <p>perimetro {{lado * 4}} area {{lado * lado}}</p>
   </div>
+
 
 
   <script>
-
-    const valmyr = new Vue({
+    const vm = new Vue({
       el: "#app",
       data: {
-        nome: "Marcelo"
-      }
-    });
-    const argo = new Vue({
-      el: "#app1",
-      data: {
-        ferramenta: "Martelo"
+        empresa: "Apple",
+        produto: "iPhone"
       }
     })
-    const chronos = new Vue({
-      el: "#app2",
+
+    const vm1 = new Vue({
+      el: "#quadrado",
       data: {
-        instrumento: "Guitarra"
+        lado: 5,
+
       }
     })
 
