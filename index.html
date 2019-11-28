@@ -10,27 +10,42 @@
 </head>
 
 <body>
-
   <div id="app">
-    <h1>{{titulo}}</h1>
-    <p>{{conteudo}}</p>
-    <p>A area do quadrado é {{lado * lado}}</p>
-    <p>O perimetro do quadrado é {{lado * 4}}</p>
-    <p> Curso: {{comprou ? "Sim ele comprou" : "Não ele não comprou"}}</p>
-
+    {{nome}}
   </div>
+  <div id="app1">
+    {{ferramenta}}
+  </div>
+
+  <div id="app2">
+    {{instrumento}}
+  </div>
+
+
   <script>
-    new Vue({
+
+    const valmyr = new Vue({
       el: "#app",
       data: {
-        titulo: "Curso de JavaScript",
-        conteudo: "Esse é o conteudo",
-        lado: 5,
-        comprou: false
+        nome: "Marcelo"
       }
-
+    });
+    const argo = new Vue({
+      el: "#app1",
+      data: {
+        ferramenta: "Martelo"
+      }
     })
+    const chronos = new Vue({
+      el: "#app2",
+      data: {
+        instrumento: "Guitarra"
+      }
+    })
+
+
   </script>
+
 </body>
 
 </html>
