@@ -12,15 +12,11 @@
 <body>
 
   <div id="app">
-    {{total}}
-    <button @click="incrementar">Aumente o número</button>
-    <button @click="decrementar">Diminua o número</button>
-    <p>{{instrumento}}</p>
-    <button @click="mudarNome('Violão')">Violão</button>
-    <button @click="mudarNome('Guitarra')">Guitarra</button>
-    <button @click="mudarNome('Bandolin')">Bandolin</button>
-    <button @click="mudarNome('Contra-Baixo')">Contra Baixo</button>
-    <button @click="verEvento">Ver EVENTO</button>
+    <p>{{informacao}}</p>
+    <p>close Time: {{informacao.closeTime}}</p>
+    <p>Company Name: {{informacao.companyName}}</p>
+    <p>Symbol: {{informacao.symbol}}</p>
+    <button @click="puxarAcoes">Puxar ações</button>
   </div>
 
 
@@ -29,25 +25,16 @@
     const vm = new Vue({
       el: "#app",
       data: {
-        total: 0,
-        instrumento: ""
+        informacao: {}
       },
       methods: {
-        incrementar() {
-          this.total++;
-          this.teste()
-        },
-        decrementar() {
-          this.total--;
-        },
-        mudarNome(instrumento) {
-          this.instrumento = instrumento;
-        },
-        verEvento(event) {
-          console.log(event)
-        },
-        teste() {
-          console.log("Teste Ativado ")
+        puxarAcoes() {
+          fetch("http://www.mocky.io/v2/5de02c14350000fa5e480b8b")
+            .then(response => response.json())
+            .then(json => {
+              this.informacao = json;
+              console.log(json);
+            })
         }
       }
 
