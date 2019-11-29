@@ -11,33 +11,22 @@
 
 <body>
 
+  <h1>testes </h1>
   <div id="app">
-    <p>{{informacao}}</p>
-    <p>close Time: {{informacao.closeTime}}</p>
-    <p>Company Name: {{informacao.companyName}}</p>
-    <p>Symbol: {{informacao.symbol}}</p>
-    <button @click="puxarAcoes">Puxar ações</button>
+    <a v-bind:href="ss">Google </a>
+    <p :class="cor"></p>
+    <p :class=" comprou ? 'verde': 'vermelho'">Ternário</p>
   </div>
 
-
-
   <script>
+
     const vm = new Vue({
       el: "#app",
       data: {
-        informacao: {}
-      },
-      methods: {
-        puxarAcoes() {
-          fetch("http://www.mocky.io/v2/5de02c14350000fa5e480b8b")
-            .then(response => response.json())
-            .then(json => {
-              this.informacao = json;
-              console.log(json);
-            })
-        }
+        ss: "https://www.google.com",
+        cor: "blue",
+        comprou: false,
       }
-
     })
 
 
@@ -45,4 +34,4 @@
 
 </body>
 
-</html>
+</html>""
