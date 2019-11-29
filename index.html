@@ -10,22 +10,60 @@
 </head>
 
 <body>
+  <style>
+    .verde {
+      color: green;
+    }
 
-  <h1>testes </h1>
+    .vermelho {
+      color: red;
+      font-size: 30px;
+    }
+  </style>
+
   <div id="app">
-    <a v-bind:href="ss">Google </a>
-    <p :class="cor"></p>
-    <p :class=" comprou ? 'verde': 'vermelho'">Ternário</p>
+    {{google}}
+    {{apple}}
+    <button @click="puxarDados">Puxar Dados</button>
+    <div>
+      <p :class="google.delayedPrice < apple.delayedPrice ? 'verde': 'vermelho'">{{google.delayedPrice}}</p>
+    </div>
+    <div>
+      <p :class="google.delayedPrice > apple.delayedPrice ? 'verde': 'vermelho'">{{apple.delayedPrice}}</p>
+      <p></p>
+    </div>
   </div>
 
   <script>
 
+
+
     const vm = new Vue({
       el: "#app",
       data: {
-        ss: "https://www.google.com",
-        cor: "blue",
-        comprou: false,
+        google: {},
+        apple: {},
+        cor: "azul",
+        lux: "amarela"
+      },
+      methods: {
+        fetchGoogle() {
+          fetch("http://www.mocky.io/v2/5de16633320000005c8093bd")
+            .then(response => response.json())
+            .then(google => { this.google = google; })
+        },
+        fetchApple() {
+          fetch("http://www.mocky.io/v2/5de16652320000195e8093be")
+            .then(response => response.json())
+            .then(apple => { this.apple = apple; })
+        },
+        puxarDados() {
+          // console.log(lux)
+          // this.lux = lux;
+          // this.cor = cor;
+          this.fetchGoogle();
+          this.fetchApple();
+        }
       }
     })
 
