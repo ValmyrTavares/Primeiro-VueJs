@@ -17,59 +17,38 @@
 
     .vermelho {
       color: red;
-      font-size: 30px;
     }
-  </style>
+  </style>>{
+
+
 
   <div id="app">
-    {{google}}
-    {{apple}}
-    <button @click="puxarDados">Puxar Dados</button>
-    <div>
-      <p :class="google.delayedPrice < apple.delayedPrice ? 'verde': 'vermelho'">{{google.delayedPrice}}</p>
-    </div>
-    <div>
-      <p :class="google.delayedPrice > apple.delayedPrice ? 'verde': 'vermelho'">{{apple.delayedPrice}}</p>
-      <p></p>
-    </div>
+    <button @click="handleClick">Clique aqui</button>
+    <button @click="contador = (!contador)">Clique aqui</button>
+    <P :class="contador == false? 'verde': 'vermelho'">TESTE</P>
+
+
+    {{contador}}
   </div>
 
   <script>
-
-
-
     const vm = new Vue({
       el: "#app",
       data: {
-        google: {},
-        apple: {},
-        cor: "azul",
-        lux: "amarela"
+        contador: true
       },
       methods: {
-        fetchGoogle() {
-          fetch("http://www.mocky.io/v2/5de16633320000005c8093bd")
-            .then(response => response.json())
-            .then(google => { this.google = google; })
-        },
-        fetchApple() {
-          fetch("http://www.mocky.io/v2/5de16652320000195e8093be")
-            .then(response => response.json())
-            .then(apple => { this.apple = apple; })
-        },
-        puxarDados() {
-          // console.log(lux)
-          // this.lux = lux;
-          // this.cor = cor;
-          this.fetchGoogle();
-          this.fetchApple();
+        handleClick(event) {
+
+          console.log(event);
+
         }
       }
     })
-
-
   </script>
+
+
 
 </body>
 
-</html>""
+</html>
