@@ -14,11 +14,14 @@
 
   <div id="app">
     <ul>
-      <li v-for="fruta, index in FRUTAS">{{fruta}} {{index}}</li>
+      <li v-for="({nome, populacao},key) in estados" :key="1">{{nome}} {{populacao}}</li>
     </ul>
     <ul>
-      <li v-for="item in estados"> {{item}} {{item.nome}} {{item.populacao}}</li>
+      <li v-for="item in estados"> "({nome, populacao},key) in estados" :key="1" </li>
     </ul>
+    <div v-for="n in 10">
+      {{n}}
+    </div>
 
   </div>
 
