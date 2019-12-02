@@ -10,36 +10,28 @@
 </head>
 
 <body>
-
-
   <div id="app">
-    <ul>
-      <li v-for=" x, y in informacao"> {{y}}: {{x}}</li>
-      <button @click="trazerLogradouro">Trazer dados</button>
-    </ul>
-
+    <button @click="puxarAula">Puxar Aulas</button>
+    <div v-for="curso in cursos">
+      <h1> <a :href="curso.link"> {{curso.curso}}</a> </h1>
+      <ul>
+        <li v-for="aula in curso.aulas">{{aula.nome}} {{aula.tempo}}</li>
+      </ul>
+    </div>
   </div>
-
-
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        informacao: {},
+        cursos: {}
       },
       methods: {
-        trazerLogradouro() {
-          fetch("https://viacep.com.br/ws/04538133/json/").then(response => response.json()).then(json => { this.informacao = json })
-          console.log(json)
+        puxarAula() {
+          fetch("./cursos.json").then(r => r.json()).then(r => { this.cursos = r })
         }
       }
-
-
     })
   </script>
-
-
-
 </body>
 
 </html>
