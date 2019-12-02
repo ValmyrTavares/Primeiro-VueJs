@@ -10,9 +10,14 @@
 </head>
 
 <body>
+  <!-- Uso do v-once "não reativo" -->
   <h1>Valmyr</h1>
   <div id="app">
     <div v-html="link"></div>
+    <p v-once>Valor Inicial {{valorTotal - totalGasto}}</p>
+    <button @click="totalGasto+=5">Comprar Banana 5</button>
+    <p>Total Gasto {{totalGasto}}</p>
+    <p>valorFinal = {{valorTotal - totalGasto}}</p>
 
   </div>
 
@@ -22,6 +27,9 @@
       el: "#app",
       data: {
         link: "<a href='https://www.origamid.com'>Valmyr</a>",
+        valorTotal: 300,
+        totalGasto: 20,
+
 
       },
 
