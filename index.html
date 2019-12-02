@@ -14,15 +14,10 @@
 
   <div id="app">
     <ul>
-      <li v-for="({nome, populacao},key) in estados" :key="1">{{nome}} {{populacao}}</li>
+      <li v-for="item in lista">{{item}}</li>
     </ul>
-    <ul>
-      <li v-for="item in estados"> "({nome, populacao},key) in estados" :key="1" </li>
-    </ul>
-    <div v-for="n in 10">
-      {{n}}
-    </div>
-
+    <button @click="removerItem">Remover</button>
+    <button @click="modificarItem">Modificar</button>
   </div>
 
 
@@ -30,24 +25,17 @@
     const vm = new Vue({
       el: "#app",
       data: {
-        FRUTAS: ["banana", "uva", "laranja"],
-        estados: {
-          sp: {
-            populacao: "2 milhoes",
-            nome: "São Paulo"
-          },
-          mg: {
-            populacao: "3 milhoes",
-            nome: "Minas Gerais "
-          },
-          rj: {
-            populacao: "4 milhoes",
-            nome: "Rio de Janeiro"
-          }
-        }
-
-
+        lista: ["item 1 ", "item 2", "item 3"]
       },
+      methods: {
+        removerItem() {
+          this.lista.pop()
+        },
+        modificarItem() {
+          this.$set(this.lista, 0, "banana");
+
+        }
+      }
 
     })
   </script>
