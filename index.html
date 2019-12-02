@@ -10,40 +10,21 @@
 </head>
 
 <body>
-  <style>
-    .verde {
-      color: green;
-    }
-
-    .vermelho {
-      color: red;
-    }
-  </style>>{
-
-
-
+  <h1>Valmyr</h1>
   <div id="app">
-    <button @click="handleClick">Clique aqui</button>
-    <button @click="contador = (!contador)">Clique aqui</button>
-    <P :class="contador == false? 'verde': 'vermelho'">TESTE</P>
+    <div v-html="link"></div>
 
-
-    {{contador}}
   </div>
+
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        contador: true
+        link: "<a href='https://www.origamid.com'>Valmyr</a>",
+
       },
-      methods: {
-        handleClick(event) {
 
-          console.log(event);
-
-        }
-      }
     })
   </script>
 
