@@ -14,10 +14,10 @@
 
   <div id="app">
     <ul>
-      <li v-for="item in lista">{{item}}</li>
+      <li v-for=" x, y in informacao"> {{y}}: {{x}}</li>
+      <button @click="trazerLogradouro">Trazer dados</button>
     </ul>
-    <button @click="removerItem">Remover</button>
-    <button @click="modificarItem">Modificar</button>
+
   </div>
 
 
@@ -25,17 +25,15 @@
     const vm = new Vue({
       el: "#app",
       data: {
-        lista: ["item 1 ", "item 2", "item 3"]
+        informacao: {},
       },
       methods: {
-        removerItem() {
-          this.lista.pop()
-        },
-        modificarItem() {
-          this.$set(this.lista, 0, "banana");
-
+        trazerLogradouro() {
+          fetch("https://viacep.com.br/ws/04538133/json/").then(response => response.json()).then(json => { this.informacao = json })
+          console.log(json)
         }
       }
+
 
     })
   </script>
