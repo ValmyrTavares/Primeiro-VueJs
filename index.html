@@ -16,6 +16,9 @@
     <ul>
       <li v-for="fruta, index in FRUTAS">{{fruta}} {{index}}</li>
     </ul>
+    <ul>
+      <li v-for="item in estados"> {{item}} {{item.nome}} {{item.populacao}}</li>
+    </ul>
 
   </div>
 
@@ -24,7 +27,21 @@
     const vm = new Vue({
       el: "#app",
       data: {
-        FRUTAS: ["banana", "uva", "laranja"]
+        FRUTAS: ["banana", "uva", "laranja"],
+        estados: {
+          sp: {
+            populacao: "2 milhoes",
+            nome: "São Paulo"
+          },
+          mg: {
+            populacao: "3 milhoes",
+            nome: "Minas Gerais "
+          },
+          rj: {
+            populacao: "4 milhoes",
+            nome: "Rio de Janeiro"
+          }
+        }
 
 
       },
