@@ -11,7 +11,10 @@
 
 <body>
   <div id="app">
-    <h1>{{total}}</h1>
+
+    <ul>
+      <li v-for="carro in carrosAzuis">{{carro.marca}} {{carro.cor}}</li>
+    </ul>
 
   </div>
 
@@ -24,7 +27,7 @@
         carros: [
           {
             marca: "Fiat",
-            cor: "vermelho"
+            cor: "azul"
           },
 
           {
@@ -34,17 +37,16 @@
 
           {
             marca: "GM",
-            cor: "Prata"
+            cor: "azul"
           }
         ],
 
-        preco: 100,
-        desconto: 0.2,
+
       },
       computed: {
-        total() {
-          return "R$ " + (this.preco - (this.preco * this.desconto))
-
+        carrosAzuis() {
+          const filtro = this.carros.filter(({ cor }) => cor === "azul")
+          return filtro
         }
       }
 
