@@ -11,27 +11,46 @@
 
 <body>
   <div id="app">
-    <button @click="puxarAula">Puxar Aulas</button>
-    <div v-for="curso in cursos">
-      <h1> <a :href="curso.link"> {{curso.curso}}</a> </h1>
-      <ul>
-        <li v-for="aula in curso.aulas">{{aula.nome}} {{aula.tempo}}</li>
-      </ul>
-    </div>
+    <h1>{{total}}</h1>
+
   </div>
+
+
   <script>
     const vm = new Vue({
       el: "#app",
+
       data: {
-        cursos: {}
+        carros: [
+          {
+            marca: "Fiat",
+            cor: "vermelho"
+          },
+
+          {
+            marca: "Ford",
+            cor: "Preto"
+          },
+
+          {
+            marca: "GM",
+            cor: "Prata"
+          }
+        ],
+
+        preco: 100,
+        desconto: 0.2,
       },
-      methods: {
-        puxarAula() {
-          fetch("./cursos.json").then(r => r.json()).then(r => { this.cursos = r })
+      computed: {
+        total() {
+          return "R$ " + (this.preco - (this.preco * this.desconto))
+
         }
       }
+
     })
   </script>
 </body>
 
 </html>
+preco -(preco * desconto
