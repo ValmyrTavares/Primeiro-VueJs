@@ -11,42 +11,62 @@
 
 <body>
   <div id="app">
-    <h2>Descubra a verdade no frontespício do oráculo de Delphis clicando no botão abaixo</h2>
-    <button @click="verdade =!verdade">LUZ</button>
-    <h1 :class={deus:verdade}>Homem conhece-te a ti mesmo e conhecerás o universo e os Deuses</h1>
+    <input v-model.lazy="nome" placeholder="nome">
+    <textarea v-model.lazy="mensagem"></textarea>
+    <input type="checkbox" v-model="receberEmail">
+    <input type="checkbox" v-model="termos">
+    <p>{{nome}}</p>
+    <p>{{mensagem}}</p>
+    <p>receber email {{receberEmail}}</p>
+    <p>Termos {{termos}}</p>
+
+    <p>{{mensagem}}</p>
+    <div>
+      <input type="radio" name="cor" v-model="cor" value="azul">
+      <input type="radio" name="cor" v-model="cor" value="vermelho">
+      <input type="radio" name="cor" v-model="cor" value="Roxo">
+      <p>{{cor}}</p>
+
+    </div>
+    <select v-model="paises">
+      <option disabled value="">Selecione um país</option>
+      <option value="Argentina">Argentina</option>
+      <option value="Italia">Italia</option>
+      <option value="França">França</option>
+      <option value="Grécia">Grécia</option>
+      <option value="Brasil">Brasil</option>
+    </select>
+    <p>{{paises}}</p>
+
+    <input type=number v-model.number="num">
+    <input type=number v-model.number="num1">
+    <p>{{num + num1}}</p>
+
+    <input v-model.trim="semEspaco" placeholder="Sem espaços"></input>
+
+    <p>{{semEspaco}}</p>
+
   </div>
-
-
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        cor: "azul",
-        estaAtivo: false,
-        elementoVerde: true,
-        verdade: true,
-      }
+        nome: "",
+        mensagem: "",
+        receberEmail: false,
+        termos: false,
+        cor: "",
+        paises: "",
+        num: 0,
+        num1: 0,
+        semEspaco: ""
+
+      },
     })
   </script>
 
-  <style>
-    .azul {
-      color: blue
-    }
 
-    .ativo {
-      font-size: 30px;
-    }
-
-    .deus {
-      display: none
-    }
-
-    .verde {
-      background: red;
-    }
-  </style>
 </body>
 
 </html>
