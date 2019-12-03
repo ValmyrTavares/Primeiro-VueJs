@@ -11,48 +11,28 @@
 
 <body>
   <div id="app">
+    <p>{{contador}}</p>
+    <button @click="contador++">Aumnetar</button>
 
-    <ul>
-      <li v-for="carro in carrosAzuis">{{carro.marca}} {{carro.cor}}</li>
-    </ul>
+
 
   </div>
-
 
   <script>
     const vm = new Vue({
       el: "#app",
-
       data: {
-        carros: [
-          {
-            marca: "Fiat",
-            cor: "azul"
-          },
-
-          {
-            marca: "Ford",
-            cor: "Preto"
-          },
-
-          {
-            marca: "GM",
-            cor: "azul"
-          }
-        ],
-
-
+        contador: 0
       },
-      computed: {
-        carrosAzuis() {
-          const filtro = this.carros.filter(({ cor }) => cor === "azul")
-          return filtro
+      watch: {
+        contador() {
+          console.log(this.contador)
         }
       }
 
     })
+
   </script>
 </body>
 
 </html>
-preco -(preco * desconto
