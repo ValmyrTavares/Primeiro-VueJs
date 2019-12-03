@@ -11,43 +11,42 @@
 
 <body>
   <div id="app">
-    <button @click="puxarDados">Puxar Dados</button>
-    <!-- <input type="text" placeholder="país" b-model="paisSelecionado"> -->
-    <select v-model="paisSelecionado">
-      <option v-for="pais in paises" :value="pais.name">
-        {{pais.name}}
-      </option>
-    </select>
-    <p>{{capital.capital}}</p>
-    <!-- <ul>
-      <li v-for="pais in paises"> {{pais.name}}</li>
-    </ul> -->
-
+    <h2>Descubra a verdade no frontespício do oráculo de Delphis clicando no botão abaixo</h2>
+    <button @click="verdade =!verdade">LUZ</button>
+    <h1 :class={deus:verdade}>Homem conhece-te a ti mesmo e conhecerás o universo e os Deuses</h1>
   </div>
+
+
+
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        paises: "",
-        capital: "",
-        paisSelecionado: "",
-      },
-      methods: {
-        puxarDados() {
-          fetch("https://restcountries.eu/rest/v2/all").then(r => r = r.json()).then(r => { this.paises = r })
-
-        }
-      },
-      watch: {
-        paisSelecionado(valor) {
-          this.capital = this.paises.find((pais) => pais.name === valor)
-          console.log(this.capital)
-        }
+        cor: "azul",
+        estaAtivo: false,
+        elementoVerde: true,
+        verdade: true,
       }
     })
-
-
   </script>
+
+  <style>
+    .azul {
+      color: blue
+    }
+
+    .ativo {
+      font-size: 30px;
+    }
+
+    .deus {
+      display: none
+    }
+
+    .verde {
+      background: red;
+    }
+  </style>
 </body>
 
 </html>
