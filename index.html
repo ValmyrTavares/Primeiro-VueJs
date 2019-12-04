@@ -10,64 +10,50 @@
 </head>
 
 <body>
-  <div id="app">
-    <input type="color" v-model="btn.background" placeholder="background">
-    <label for="width">Width</label>
-    <input type="text" id="width" v-model="btn.width" placeholder="width">
-    <label for="height">Height</label>
-    <input type="text" id="height" v-model="btn.height" placeholder="height">
-    <label for="font-size">Font Size</label>
-    <input type="text" id="font-size" v-model="btn.fontSize" placeholder="font-size">
-    <label for="font-family">Font Family</label>
-    <input type="text" id="font-family" v-model="btn.fontFamily" placeholder="font-family">
-    <label for="text-align">Alinha Texto</label>
-    <input type="text" id="text-align" v-model="btn.textAlign" placeholder="text-align">
-    <label for="color">Color</label>
-    <input type="color" v-model="btn.color" placeholder="color">
-    <label for="border-radius">Bordas Arredondadas</label>
-    <input type="text" id="border-radius" v-model="btn.borderRadius" placeholder="border-radius">
 
-    <a :style="btn" href="">Botão Autônomo</a>
-    <p> {{btn.background}}</p>
-    <p> {{btn.width}}</p>
-    <p> {{btn.height}}</p>
-    <p> {{btn.fontSize}}</p>
-    <p> {{btn.fontFamily}}</p>
-    <p> {{btn.textAlign}}</p>
-    <p> {{btn.color}}</p>
-    <p> {{btn.borderRadius}}
+
+  <div id="app">
+
+    <label for="nome">Nome</label><br>
+    <input type="text" id="nome" placeholder="nome" v-model="nome"><br>
+    <label for="fone">Telefone</label> <br>
+    <input type="text" id="fone" placeholder="fone" v-model="email"> <br>
+    <label for="email"></label> <br>
+    <input type="text" id="nome" placeholder="Enail" v-model="fone"> <br>
+    <label for="msg"></label> <br>
+    <textarea type="text" id="msg" style="width:150px; height:200px;" placeholder="mensagem" v-model="mensagem">
+    </textarea><br>
+    <button @click="show = !show">Mostrar todos dados</button>
+
+    <div :class={mostra:show}>
+      <p>Nome: {{nome}}</p><br>
+      <p>Email: {{email}}</p><br>
+      <p>Fone: {{fone}}</p><br>
+      <p>Mensagem: {{mensagem}}<br></p>
+    </div>
   </div>
+
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        btn: {
-          background: "",
-          height: "20px",
-          width: "20px",
-          fontSize: "30px",
-          fontFamily: "arial",
-          textAlign: "left",
-          color: "black",
-          borderRadius: "50px"
-        }
-      }
-
-    })
+        mensagem: "",
+        nome: "",
+        email: "",
+        fone: "",
+        show: true,
+      },
+    });
   </script>
-  <style>
-    label {
-      margin-top: 50px;
-      display: block;
-    }
 
-    a {
-      margin-top: 50px;
-      margin-bottom: 140px;
-      display: block;
+  <style>
+    .mostra {
+      display: none;
+
     }
   </style>
+
 
 
 </body>
