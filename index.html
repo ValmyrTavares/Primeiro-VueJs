@@ -11,60 +11,63 @@
 
 <body>
   <div id="app">
-    <input v-model.lazy="nome" placeholder="nome">
-    <textarea v-model.lazy="mensagem"></textarea>
-    <input type="checkbox" v-model="receberEmail">
-    <input type="checkbox" v-model="termos">
-    <p>{{nome}}</p>
-    <p>{{mensagem}}</p>
-    <p>receber email {{receberEmail}}</p>
-    <p>Termos {{termos}}</p>
+    <input type="color" v-model="btn.background" placeholder="background">
+    <label for="width">Width</label>
+    <input type="text" id="width" v-model="btn.width" placeholder="width">
+    <label for="height">Height</label>
+    <input type="text" id="height" v-model="btn.height" placeholder="height">
+    <label for="font-size">Font Size</label>
+    <input type="text" id="font-size" v-model="btn.fontSize" placeholder="font-size">
+    <label for="font-family">Font Family</label>
+    <input type="text" id="font-family" v-model="btn.fontFamily" placeholder="font-family">
+    <label for="text-align">Alinha Texto</label>
+    <input type="text" id="text-align" v-model="btn.textAlign" placeholder="text-align">
+    <label for="color">Color</label>
+    <input type="color" v-model="btn.color" placeholder="color">
+    <label for="border-radius">Bordas Arredondadas</label>
+    <input type="text" id="border-radius" v-model="btn.borderRadius" placeholder="border-radius">
 
-    <p>{{mensagem}}</p>
-    <div>
-      <input type="radio" name="cor" v-model="cor" value="azul">
-      <input type="radio" name="cor" v-model="cor" value="vermelho">
-      <input type="radio" name="cor" v-model="cor" value="Roxo">
-      <p>{{cor}}</p>
-
-    </div>
-    <select v-model="paises">
-      <option disabled value="">Selecione um país</option>
-      <option value="Argentina">Argentina</option>
-      <option value="Italia">Italia</option>
-      <option value="França">França</option>
-      <option value="Grécia">Grécia</option>
-      <option value="Brasil">Brasil</option>
-    </select>
-    <p>{{paises}}</p>
-
-    <input type=number v-model.number="num">
-    <input type=number v-model.number="num1">
-    <p>{{num + num1}}</p>
-
-    <input v-model.trim="semEspaco" placeholder="Sem espaços"></input>
-
-    <p>{{semEspaco}}</p>
-
+    <a :style="btn" href="">Botão Autônomo</a>
+    <p> {{btn.background}}</p>
+    <p> {{btn.width}}</p>
+    <p> {{btn.height}}</p>
+    <p> {{btn.fontSize}}</p>
+    <p> {{btn.fontFamily}}</p>
+    <p> {{btn.textAlign}}</p>
+    <p> {{btn.color}}</p>
+    <p> {{btn.borderRadius}}
   </div>
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        nome: "",
-        mensagem: "",
-        receberEmail: false,
-        termos: false,
-        cor: "",
-        paises: "",
-        num: 0,
-        num1: 0,
-        semEspaco: ""
+        btn: {
+          background: "",
+          height: "20px",
+          width: "20px",
+          fontSize: "30px",
+          fontFamily: "arial",
+          textAlign: "left",
+          color: "black",
+          borderRadius: "50px"
+        }
+      }
 
-      },
     })
   </script>
+  <style>
+    label {
+      margin-top: 50px;
+      display: block;
+    }
+
+    a {
+      margin-top: 50px;
+      margin-bottom: 140px;
+      display: block;
+    }
+  </style>
 
 
 </body>
