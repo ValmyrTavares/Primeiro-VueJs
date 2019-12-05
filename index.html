@@ -11,25 +11,35 @@
 
 <body>
 
-  <div id="app">
-    <input type="text" @keyup.enter="ativar" v-model=mensagem>
+  <div style="position:fixed" id="app">
+    <p>{{totalScroll}}</p>
   </div>
-
-
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        mensagem: "",
+        totalScroll: 0,
       },
       methods: {
-        ativar() {
-          console.log(this.mensagem)
+        handleScroll() {
+          this.totalScroll = window.scrollY
+          console.log(this.totalScroll)
         }
-      }
+      },
+      created() {
+        console.log("Ve se deu")
+        window.addEventListener("scroll", this.handleScroll);
 
+      }
     });
   </script>
+
+
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
 
 
 </body>
