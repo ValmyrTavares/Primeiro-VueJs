@@ -23,14 +23,28 @@
     <label for="msg"></label> <br>
     <textarea type="text" id="msg" style="width:150px; height:200px;" placeholder="mensagem" v-model="mensagem">
     </textarea><br>
-    <button @click="show = !show">Mostrar todos dados</button>
+    <button @click=" mostraMensagem">Mostrar todos dados</button>
 
-    <div :class={mostra:show}>
+    <div>
       <p>Nome: {{nome}}</p><br>
       <p>Email: {{email}}</p><br>
       <p>Fone: {{fone}}</p><br>
-      <p>Mensagem: {{mensagem}}<br></p>
+      <p>Mensagem: {{mensagem}}</p>
+      <p>{{cliente}}</p>
+
     </div>
+    <ul>
+
+      <li v-for="valor, cliente in clientes">{{cliente}} {{valor}}</li>
+
+    </ul v-for="array in  arrays">
+
+    <ul v-for="array in  arrays">
+      <li> Nome: {{array.nome}}</li>
+      <li> Email: {{array.email}}</li>
+      <li> Fone:{{array.fone}}</li>
+      <li> {{array.mensagem}}</li>
+    </ul>
   </div>
 
 
@@ -42,18 +56,25 @@
         nome: "",
         email: "",
         fone: "",
-        show: true,
+        arrays: [],
+        clientes: {},
       },
+      methods: {
+        mostraMensagem() {
+
+          this.clientes = {
+            nome: this.nome,
+            email: this.email,
+            fone: this.fone,
+            mensagem: this.mensagem
+          }
+          this.arrays.push(this.clientes)
+          console.log(this.arrays)
+          console.log(this.nome)
+        }
+      }
     });
   </script>
-
-  <style>
-    .mostra {
-      display: none;
-
-    }
-  </style>
-
 
 
 </body>
