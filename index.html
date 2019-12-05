@@ -11,40 +11,8 @@
 
 <body>
 
-
   <div id="app">
-
-    <label for="nome">Nome</label><br>
-    <input type="text" id="nome" placeholder="nome" v-model="nome"><br>
-    <label for="fone">Telefone</label> <br>
-    <input type="text" id="fone" placeholder="fone" v-model="email"> <br>
-    <label for="email"></label> <br>
-    <input type="text" id="nome" placeholder="Enail" v-model="fone"> <br>
-    <label for="msg"></label> <br>
-    <textarea type="text" id="msg" style="width:150px; height:200px;" placeholder="mensagem" v-model="mensagem">
-    </textarea><br>
-    <button @click=" mostraMensagem">Mostrar todos dados</button>
-
-    <div>
-      <p>Nome: {{nome}}</p><br>
-      <p>Email: {{email}}</p><br>
-      <p>Fone: {{fone}}</p><br>
-      <p>Mensagem: {{mensagem}}</p>
-      <p>{{cliente}}</p>
-
-    </div>
-    <ul>
-
-      <li v-for="valor, cliente in clientes">{{cliente}} {{valor}}</li>
-
-    </ul v-for="array in  arrays">
-
-    <ul v-for="array in  arrays">
-      <li> Nome: {{array.nome}}</li>
-      <li> Email: {{array.email}}</li>
-      <li> Fone:{{array.fone}}</li>
-      <li> {{array.mensagem}}</li>
-    </ul>
+    <input type="text" @keyup.enter="ativar" v-model=mensagem>
   </div>
 
 
@@ -53,26 +21,13 @@
       el: "#app",
       data: {
         mensagem: "",
-        nome: "",
-        email: "",
-        fone: "",
-        arrays: [],
-        clientes: {},
       },
       methods: {
-        mostraMensagem() {
-
-          this.clientes = {
-            nome: this.nome,
-            email: this.email,
-            fone: this.fone,
-            mensagem: this.mensagem
-          }
-          this.arrays.push(this.clientes)
-          console.log(this.arrays)
-          console.log(this.nome)
+        ativar() {
+          console.log(this.mensagem)
         }
       }
+
     });
   </script>
 
